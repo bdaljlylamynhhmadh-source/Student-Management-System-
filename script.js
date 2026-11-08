@@ -1,4 +1,7 @@
-// 1- Student Class
+// Student Management and Results Analysis System
+// Prepared by: Omnia Hamada
+
+// 1. Create Student Class
 class Student {
     constructor(id, name, grades, attendance) {
         this.id = id;
@@ -7,7 +10,7 @@ class Student {
         this.attendance = attendance;
     }
 
-    // Calculate Average using reduce
+    // 2. Calculate Average using reduce
     calculateAverage() {
         const total = this.grades.reduce((sum, grade) => sum + grade, 0);
         return total / this.grades.length;
@@ -32,7 +35,7 @@ class Student {
         }
     }
 
-    // Final Result
+    // Final Result using &&
     getResult() {
         const average = this.calculateAverage();
 
@@ -44,7 +47,7 @@ class Student {
     }
 }
 
-// 2- Create Students List
+// 3. Create Students Array
 const studentsList = [
     new Student(101, "Ahmed", [45, 48, 42], 90),
     new Student(102, "Mona", [80, 85, 90], 95),
@@ -52,13 +55,13 @@ const studentsList = [
     new Student(104, "Sara", [30, 35, 40], 70)
 ];
 
-// 3- Filter Struggling Students
+// 4. Filter Struggling Students
 const strugglingStudents = studentsList.filter(student => {
     const average = student.calculateAverage();
     return average >= 40 && average <= 49;
 });
 
-// 4- Add 5 Mercy Marks using map
+// 5. Add 5 Mercy Marks using map
 const mercyStudents = strugglingStudents.map(student => {
     return {
         id: student.id,
@@ -68,33 +71,34 @@ const mercyStudents = strugglingStudents.map(student => {
     };
 });
 
-// 5- Calculate Total New Averages
+// 6. Calculate Total using reduce
 const totalNewAverages = mercyStudents.reduce((sum, student) => {
     return sum + student.newAverage;
 }, 0);
 
-// 6- Calculate Mercy Average
+// 7. Calculate Mercy Average
 const mercyAverage = mercyStudents.length > 0
     ? totalNewAverages / mercyStudents.length
     : 0;
 
-// 7- Print Students Reports
+// 8. Print Students Reports
+console.log("Prepared by: Omnia Hamada");
 console.log("===== STUDENTS REPORT =====");
 
 studentsList.forEach(student => {
-    console.log("--------------------");
-    console.log("Name:", student.name);
+    console.log("-------------------------");
+    console.log("Student ID:", student.id);
+    console.log("Student Name:", student.name);
     console.log("Average:", student.calculateAverage().toFixed(2));
     console.log("Grade:", student.getGrade());
     console.log("Result:", student.getResult());
 });
 
-// 8- Print Mercy Committee
+// 9. Print Mercy Committee
 console.log("===== MERCY COMMITTEE =====");
-
 console.log("Struggling Students:", mercyStudents);
 
-// 9- Print Mercy Average
+// 10. Print Mercy Average
 console.log("Average After Mercy:", mercyAverage.toFixed(2));
 
 console.log("===== END OF REPORT =====");
