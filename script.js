@@ -1,4 +1,4 @@
-// Student Management and Results Analysis System
+// Student Management System
 // Prepared by: Omnia Hamada
 
 // 1. Create Student Class
@@ -16,7 +16,7 @@ class Student {
         return total / this.grades.length;
     }
 
-    // Calculate Grade
+    // 3. Calculate Grade
     getGrade() {
         const average = this.calculateAverage();
 
@@ -35,7 +35,7 @@ class Student {
         }
     }
 
-    // Final Result using &&
+    // 4. Final Result using &&
     getResult() {
         const average = this.calculateAverage();
 
@@ -47,7 +47,7 @@ class Student {
     }
 }
 
-// 3. Create Students Array
+// 5. Create Students List
 const studentsList = [
     new Student(101, "Ahmed", [45, 48, 42], 90),
     new Student(102, "Mona", [80, 85, 90], 95),
@@ -55,13 +55,13 @@ const studentsList = [
     new Student(104, "Sara", [30, 35, 40], 70)
 ];
 
-// 4. Filter Struggling Students
+// 6. Filter Struggling Students
 const strugglingStudents = studentsList.filter(student => {
     const average = student.calculateAverage();
     return average >= 40 && average <= 49;
 });
 
-// 5. Add 5 Mercy Marks using map
+// 7. Add 5 Mercy Marks using map
 const mercyStudents = strugglingStudents.map(student => {
     return {
         id: student.id,
@@ -71,17 +71,17 @@ const mercyStudents = strugglingStudents.map(student => {
     };
 });
 
-// 6. Calculate Total using reduce
+// 8. Calculate Total using reduce
 const totalNewAverages = mercyStudents.reduce((sum, student) => {
     return sum + student.newAverage;
 }, 0);
 
-// 7. Calculate Mercy Average
+// 9. Calculate Mercy Average
 const mercyAverage = mercyStudents.length > 0
     ? totalNewAverages / mercyStudents.length
     : 0;
 
-// 8. Print Students Reports
+// 10. Print Students Reports
 console.log("Prepared by: Omnia Hamada");
 console.log("===== STUDENTS REPORT =====");
 
@@ -94,11 +94,20 @@ studentsList.forEach(student => {
     console.log("Result:", student.getResult());
 });
 
-// 9. Print Mercy Committee
+// 11. Print Mercy Committee
 console.log("===== MERCY COMMITTEE =====");
 console.log("Struggling Students:", mercyStudents);
 
-// 10. Print Mercy Average
+// 12. Print Mercy Average
 console.log("Average After Mercy:", mercyAverage.toFixed(2));
+
+// 13. Check JavaScript Connection
+console.log("JavaScript Connected Successfully!");
+
+const statusElement = document.getElementById("status");
+
+if (statusElement) {
+    statusElement.innerText = "JavaScript Connected Successfully!";
+}
 
 console.log("===== END OF REPORT =====");
